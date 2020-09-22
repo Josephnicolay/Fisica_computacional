@@ -18,7 +18,7 @@
 # ## Plus
 # Considere el caso forzado y proceda de manera similar a los incisos anteriores
 
-# In[23]:
+# In[1]:
 
 
 # Importamos el modulo donde se construyo la Oscilador
@@ -30,7 +30,7 @@ import MasaResorte as mr
 import numpy as np
 
 
-# In[36]:
+# In[2]:
 
 
 # punto 1
@@ -57,7 +57,7 @@ for i in range(0,5):
    
 
 
-# In[37]:
+# In[3]:
 
 
 # punto 2
@@ -80,7 +80,7 @@ for i in range(0,5):
     
 
 
-# In[38]:
+# In[4]:
 
 
 # Plus

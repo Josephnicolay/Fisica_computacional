@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[2]:
+# In[1]:
 
 
 #Importamos las librerias necesarias
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 
 
-# In[70]:
+# In[32]:
 
 
 class Oscilador(object):
@@ -48,7 +48,8 @@ class Oscilador(object):
 
         # Ahora grafiquemos la solución
         # Se define el plot
-        fig, (ax1,ax2) = plt.subplots(nrows=2,ncols=1, figsize=(10, 6))
+        fig, (ax1,ax2,ax3) = plt.subplots(nrows=3,ncols=1, figsize=(10, 10))
+        
         # los valores de los ejes y el marcador 
         ax1.plot(t, sol[:,0], marker = ',',color='b')
         # accedo a las propiedades de la leyenda y las modifico
@@ -57,7 +58,7 @@ class Oscilador(object):
         # Se ponen titulo y nombre de los ejes
         ax1.set(title = "Solución EDO $y''+2\lambda y' + w_{0}^2 y = G(w,t) $",
               xlabel = "time [s]",
-              ylabel = "$y(t) [m]$")
+              ylabel = r"$y(t) [m]$")
         ax1.grid()
 
         # los valores de los ejes y el marcador 
@@ -66,17 +67,29 @@ class Oscilador(object):
         ax2.legend([" y'"], loc='upper right', borderaxespad=0.5, borderpad=1)
 
         # Se ponen titulo y nombre de los ejes
-        ax2.set(title = "",
+        ax2.set(title = "Velocidad",
               xlabel = "time [s]",
-              ylabel = "$v (t) [m/s]$")
+              ylabel = r"$v (t) [m/s]$")
         ax2.grid()
+        
+        # los valores de los ejes y el marcador 
+        ax3.plot(sol[:,0], sol[:,1], marker = ',', color='green')
+        # accedo a las propiedades de la leyenda y las modifico
+        ax3.legend([r"$v_{y}(y)$"], loc='best', borderaxespad=0.5, borderpad=1)
+
+        # Se ponen titulo y nombre de los ejes
+        ax3.set(title = "Espacio de fase",
+              xlabel = "Position [m]",
+              ylabel = r"$v (t) [m/s]$")
+        ax3.grid()
         
         
         #plt.savefig('img'+self.name+'.png')
+        fig.tight_layout(pad=1.5)
         plt.show()
 
 
-# In[71]:
+# In[33]:
 
 
 ## Tests
@@ -85,25 +98,25 @@ H_amortiguado = Oscilador(frec_natural=4, visco=0.05)
 H_forzado = Oscilador(frec_natural=4, visco=0.05, frec_forzada=4.5, amplitud_forzada=1)
 
 
-# In[63]:
+# In[34]:
 
 
 H_armonico.plot_solution(1,0)
 
 
-# In[64]:
+# In[35]:
 
 
 H_amortiguado.plot_solution(1,0)
 
 
-# In[65]:
+# In[36]:
 
 
 H_forzado.plot_solution(1,0)
 
 
-# In[72]:
+# In[37]:
 
 
 ## Si desea plotear la curva de resonancia para un oscilador forzado
